@@ -21,6 +21,25 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <section class='flex justify-center '>
+                <footer class='mt-2 border-gray-600 flex justify-between border-t p-5'>
+                    <div>
+                        <!-- github here -->
+                        github link
+                    </div>
+                    
+                    <div>
+                        <!-- linkedin here -->
+                        linkedin link
+                    </div>
+        
+                    <div>
+                        <!-- email here -->
+                        email link
+                    </div>
+                 </footer>
+            </section>
         </div>
     </body>
 </html>

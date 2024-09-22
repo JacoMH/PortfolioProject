@@ -17,7 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = DB::table('project')
-        ->join('projectimages', 'projectimages.project_id', '=', 'project.id')
+        ->join('projectimages', 'projectimages.project_id', '=', 'project.id') //try and only get the first image for the project 
         ->select('project.*', 'projectimages.*')
         ->get()
         ->map(function ($post){
@@ -60,10 +60,7 @@ class ProjectController extends Controller
     public function show(project $project, $id)
     {
         //
-        $projects = DB::table('project')
-        ->join('projectimages', 'projectimages.project_id', '=', 'project.id')
-        ->select('project.*', 'projectimages.*')
-        ->where('project.id', '=', $id)
+         $projects = project::where('id', $id)
         ->get()
         ->map(function ($post){
             $post->updated_at = Carbon::parse($post->updated_at); //changes the string created by the STDclass to a carbon instance
@@ -71,8 +68,10 @@ class ProjectController extends Controller
             return $post;
         });
 
+        $projectImages = DB::table('projectimages')->where('project_id', $id)->get();
+        
         //return projects
-        return view('portfolio/project', ['projects' => $projects]);
+        return view('portfolio/project', ['projects' => $projects, 'projectImages' => $projectImages]);
     }
 
     /**
