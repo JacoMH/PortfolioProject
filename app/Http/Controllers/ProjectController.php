@@ -17,13 +17,13 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = DB::table('project')
-        ->join('projectimages', 'projectimages.project_id', '=', 'project.id') //try and only get the first image for the project 
+        ->leftJoin(DB::raw('(SELECT * FROM projectimages LIMIT 1) as projectimages'), 'projectimages.project_id', '=', 'project.id') //only 1 image from projectimages
         ->select('project.*', 'projectimages.*')
         ->get()
         ->map(function ($post){
-            $post->updated_at = Carbon::parse($post->updated_at); //changes the string created by the STDclass to a carbon instance
-            $post->created_at = Carbon::parse($post->created_at);
-            return $post;
+        $post->updated_at = Carbon::parse($post->updated_at); // changes the string created by the STDclass to a carbon instance
+        $post->created_at = Carbon::parse($post->created_at);
+        return $post;
         });
 
         //return projects
