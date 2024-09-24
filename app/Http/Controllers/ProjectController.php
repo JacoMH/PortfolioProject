@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,17 +17,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = DB::table('project')
-        ->leftJoin(DB::raw('(SELECT * FROM projectimages LIMIT 1) as projectimages'), 'projectimages.project_id', '=', 'project.id') //only 1 image from projectimages
-        ->select('project.*', 'projectimages.*')
-        ->get()
-        ->map(function ($post){
-        $post->updated_at = Carbon::parse($post->updated_at); // changes the string created by the STDclass to a carbon instance
-        $post->created_at = Carbon::parse($post->created_at);
-        return $post;
-        });
+        $projects = Project::with(['images' => function($query) {
+            $query->orderBy('id')->limit(1); //this query made with help of AI as i am not very experienced with eloquent yet
+        }])->get();
 
-        //return projects
         return view('portfolio/index', ['projects' => $projects]);
     }
 
