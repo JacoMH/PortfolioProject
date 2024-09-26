@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [adminController::class, 'index'])->name('admin.index')->middleware(['auth', 'verified']);
+Route::get('admin/dashboard', [adminController::class, 'index'])->name('admin.index')->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
