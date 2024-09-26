@@ -18,7 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with(['images' => function($query) {
-            $query->orderBy('id')->limit(1); //this query made with help of AI as i am not very experienced with eloquent yet
+            $query->orderBy('id'); //this query made with help of AI as i am not very experienced with eloquent yet
         }])->get();
 
         return view('portfolio/index', ['projects' => $projects]);

@@ -22,24 +22,27 @@
                 {{ $slot }}
             </main>
 
-            <section class='flex justify-center '>
-                <footer class='mt-2 border-gray-600 flex justify-between border-t p-5'>
-                    <div>
-                        <!-- github here -->
-                        github link
-                    </div>
-                    
-                    <div>
-                        <!-- linkedin here -->
-                        linkedin link
-                    </div>
-        
-                    <div>
-                        <!-- email here -->
-                        email link
-                    </div>
-                 </footer>
-            </section>
+            <div class='flex justify-center'>
+                <section class='max-w-[600px] w-full'>
+                    <footer class='mt-2 border-gray-600 flex justify-between border-t p-5'>
+                        <div>
+                            <!-- github here -->
+                            <a href='https://github.com/JacoMH' target='_blank' rel="noreferrer noopener">Github</a>
+                        </div>
+                        
+                        <div>
+                            <!-- linkedin here -->
+                            <a href='https://www.linkedin.com/in/jacob-heyes-204b70297/' target='_blank' rel="noreferrer noopener">LinkedIn</a>
+                        </div>
+            
+                        <div>
+                            <!-- email here -->
+                            <span>heyesjacob@gmail.com</span>
+                        </div>
+                     </footer>
+                </section>
+            </div>
+            
         </div>
     </body>
 </html>
