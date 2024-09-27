@@ -51,7 +51,7 @@ class ProjectController extends Controller
      * @param  \App\Models\project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(project $project, $id)
+    public function show($id)
     {
         //
          $projects = project::where('id', $id)

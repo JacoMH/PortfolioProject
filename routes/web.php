@@ -21,6 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('admin/dashboard', [adminController::class, 'index'])->name('admin.index')->middleware(['auth', 'verified']);
+Route::get('admin/edit/{id}', [adminController::class, 'editPage'])->name('admin.editPage')->middleware(['auth', 'verified']);
+Route::get('admin/add', [adminController::class, 'add'])->name('admin.add')->middleware(['auth', 'verified']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,5 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/portfolio', ProjectController::class);
+
+
 
 require __DIR__.'/auth.php';
