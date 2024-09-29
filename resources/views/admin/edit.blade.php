@@ -20,6 +20,15 @@
                             <label name='projectLink'>Links</label>
                             <textarea type='text' name='projectLink'>{{ $project->projectLink }}</textarea>
 
+                            @if($project->images->isNotEmpty())
+                                @foreach($project->images as $image)
+                                    <img class='max-w-[200px] self-center pb-2' src='{{ $image->imageLink}}'></img>
+                                    <input type='button'></input>                                
+                                @endforeach
+                                @else
+                                <div class='text-center text-gray-500'>No image available</div>
+                                @endif
+
                             <input type='submit' name='SubmitEdit'></input>
                         </form>
                         <a href='{{ route('portfolio.show', $project->id)}}' class=' m-4 border-2 rounded-md border-gray-400 flex flex-col max-w-[250px] bg-gray-100 p-2 transition ease-in-out hover:scale-110'>
