@@ -9,6 +9,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 flex flex-wrap justify-center">
                     @forelse ($projects as $project)
+                        <form method='POST' action='{{ route('admin.edit', $project->id) }}'>
+                            @csrf
+                            <label name='title'>Title</label>
+                            <textarea type='text' name='title'>{{ $project->title }}</textarea>
+                            <label name='Description'>Description</label>
+                            <textarea type='text' name='Description'>{{ $project->Description }}</textarea>
+                            <label name='Notices'>Notices</label>
+                            <textarea type='text' name='Notices'>{{ $project->Notices }}</textarea>
+                            <label name='projectLink'>Links</label>
+                            <textarea type='text' name='projectLink'>{{ $project->projectLink }}</textarea>
+
+                            <input type='submit' name='SubmitEdit'></input>
+                        </form>
                         <a href='{{ route('portfolio.show', $project->id)}}' class=' m-4 border-2 rounded-md border-gray-400 flex flex-col max-w-[250px] bg-gray-100 p-2 transition ease-in-out hover:scale-110'>
                             <div class=' text-center text-gray-500 text-xl p-1'>{{ $project->title }}</div>
                             <!-- image thumbnail -->

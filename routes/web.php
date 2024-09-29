@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('admin/dashboard', [adminController::class, 'index'])->name('admin.index')->middleware(['auth', 'verified']);
 Route::get('admin/edit/{id}', [adminController::class, 'editPage'])->name('admin.editPage')->middleware(['auth', 'verified']);
 Route::get('admin/add', [adminController::class, 'add'])->name('admin.add')->middleware(['auth', 'verified']);
+Route::get('admin/update', [adminController::class, 'edit'])->name('admin.edit')->middleware(['auth', 'verified']);
 
 
 Route::middleware('auth')->group(function () {

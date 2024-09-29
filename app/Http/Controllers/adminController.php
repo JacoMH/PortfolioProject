@@ -39,4 +39,13 @@ class adminController extends Controller
     {
         return view('admin/add');
     }
+
+    public function edit(Request $project, $id) 
+    {
+        
+        project::where('id', $id)
+        ->update(['title' => $project->title, 'Description' => $project->Description, 'projectLink' => $project->projectLink, 'Notices' => $project->Notices]);
+
+        return view('admin/edit');
+    }
 }
