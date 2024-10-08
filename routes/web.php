@@ -38,4 +38,8 @@ Route::resource('/portfolio', ProjectController::class);
 
 Route::resource('/skills', SkillController::class);
 
+Route::get('/contact', function() {
+    return view('contact');
+});
+
 require __DIR__.'/auth.php';

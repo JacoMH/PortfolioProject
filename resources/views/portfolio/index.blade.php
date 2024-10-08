@@ -12,25 +12,25 @@
             
             
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-screen">
-                <div class="p-6 text-gray-900 flex flex-wrap justify-center">
+                <div class="p-6 text-gray-900 flex-col flex justify-center items-center">
                     <!-- filter -->
-                    
+                    {{dd($projects)}}
                     
                     @forelse ($projects as $project)
-                        <a href='{{ route('portfolio.show', $project->id)}}' class=' m-4 border-2 rounded-md border-gray-400 flex flex-col max-w-[250px] bg-gray-100 p-2 transition ease-in-out hover:scale-110'>
-                            <div class=' text-center text-gray-500 text-xl p-1'>{{ $project->title }}</div>
+                        <a href='{{ route('portfolio.show', $project->id)}}' class=' m-4 border-2 rounded-md border-gray-400 flex flex-col max-w-[900px] min-w-[600px] w-full bg-gray-100 p-2 transition ease-in-out hover:scale-105'>
                             <!-- image thumbnail -->
-                            @if($project->images->isNotEmpty())
+                                <div class='text-gray-500 text-xl p-1'>{{ $project->title }}</div>
+                                @if($project->images->isNotEmpty())
                                 @foreach($project->images as $image)
                                     @if ($loop->index == 0) <!-- if image is 1st in the array it is displayed, otherwise it is not -->
-                                    <img class='max-w-[200px] self-center pb-2' src='{{ $image->imageLink}}'></img>
+                                    <img class='max-w-[300px] self-start pb-2' src='{{ $image->imageLink}}'></img>
                                     @endif
                                 
                                 @endforeach
                                 @else
                                 <div class='text-center text-gray-500'>No image available</div>
                                 @endif
-                            <div class=' text-center text-gray-500 text-xl p-1'>{{ $project->updated_at->DiffForHumans()}}</div>
+
                             <div>
     
                             </div>

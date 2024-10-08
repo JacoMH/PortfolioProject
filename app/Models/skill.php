@@ -10,6 +10,6 @@ class skill extends Model
     use HasFactory;
     protected $table = 'skill';
     public function project() {
-        return $this->hasMany(project::class);
+        return $this->hasMany(project::class, 'projectskill', 'project_id', 'skill_id');
         }
 }

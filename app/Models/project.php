@@ -15,6 +15,6 @@ class project extends Model
         }
 
     public function skills() {
-        return $this->hasMany(skill::class);
+        return $this->hasMany(skill::class, 'projectskill', 'project_id', 'skill_id');
         }
 }

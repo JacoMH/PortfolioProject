@@ -6,7 +6,7 @@
     </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @forelse ($projects as $project)
                         <div class=' text-center text-gray-500 text-4xl mb-2'>{{ $project->title }}</div>
@@ -59,6 +59,15 @@
                                 <span class='underline text-xl'>Links</span>
                                 <a href='{{$project->projectLink}}' target='_blank' rel="noreferrer noopener">{{$project->projectLink}}</a> 
                             </div>
+                        </section>
+
+                        <section>
+                            <span>Skills Used In this Project:</span>
+                            @forelse ($skills as $skill)
+                                <a href=' {{route('skills.index')}}'>{{ $skill->SkillName }}</a>
+                            @empty
+
+                            @endforelse
                         </section>
                     @empty
                     <div class='m-10'>

@@ -17,9 +17,15 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with(['images' => function($query) {
-            $query->orderBy('id'); //this query made with help of AI as i am not very experienced with eloquent yet
-        }])->get();
+        $projects = Project::with([
+            'images' => function($query) {
+                $query->orderBy('id'); // Eager load images and order by 'id'
+            },
+            'skills' => function($query) {
+                $query->select('skill.id', 'skill.SkillName'); // Select relevant fields from skills
+            }
+        ])
+        ->get();
 
         return view('portfolio/index', ['projects' => $projects]);
     }
@@ -63,9 +69,14 @@ class ProjectController extends Controller
         });
 
         $projectImages = DB::table('projectimages')->where('project_id', $id)->get();
+
+        $projectSkills = DB::table('projectskill')
+        ->leftJoin('skill', 'projectskill.skill_id', '=', 'skill.id')
+        ->select('projectskill.*', 'skill.SkillName')
+        ->get();
         
         //return projects
-        return view('portfolio/project', ['projects' => $projects, 'projectImages' => $projectImages]);
+        return view('portfolio/project', ['projects' => $projects, 'projectImages' => $projectImages, 'skills' => $projectSkills]);
     }
 
     /**
