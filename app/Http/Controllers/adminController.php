@@ -48,4 +48,9 @@ class adminController extends Controller
 
         return view('admin/edit');
     }
+
+    public function store(Request $add) 
+    {
+        dd($add);
+    }
 }

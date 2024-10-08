@@ -13,4 +13,8 @@ class project extends Model
     public function images() {
         return $this->hasMany(projectimages::class);
         }
+
+    public function skills() {
+        return $this->hasMany(skill::class);
+        }
 }
