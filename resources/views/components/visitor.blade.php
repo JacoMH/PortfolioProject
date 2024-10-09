@@ -24,21 +24,24 @@
 
             <div class='flex justify-center'>
                 <section class='max-w-[600px] w-full'>
-                    <footer class='mt-2 border-gray-600 flex justify-between border-t p-5'>
-                        <div>
-                            <!-- github here -->
-                            <a href='https://github.com/JacoMH' target='_blank' rel="noreferrer noopener">Github</a>
-                        </div>
-                        
-                        <div>
-                            <!-- linkedin here -->
-                            <a href='https://www.linkedin.com/in/jacob-heyes-204b70297/' target='_blank' rel="noreferrer noopener">LinkedIn</a>
-                        </div>
-            
-                        <div>
-                            <!-- email here -->
-                            <span>heyesjacob@gmail.com</span>
-                        </div>
+                    <footer>
+                        <div class='mt-2 border-blue-500 flex justify-between bg-gradient-to-r border-t from-transparent via-blue-700 to-transparent h-0.5 w-full'>                        </div>
+                        <section class='flex flex-row justify-between p-10'>
+                            <div>
+                                <!-- github here -->
+                                <a href='https://github.com/JacoMH' target='_blank' rel="noreferrer noopener">Github</a>
+                            </div>
+                            
+                            <div>
+                                <!-- linkedin here -->
+                                <a href='https://www.linkedin.com/in/jacob-heyes-204b70297/' target='_blank' rel="noreferrer noopener">LinkedIn</a>
+                            </div>
+                
+                            <div>
+                                <!-- email here -->
+                                <span>heyesjacob@gmail.com</span>
+                            </div>
+                        </section>
                      </footer>
                 </section>
             </div>
